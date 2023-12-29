@@ -1,81 +1,49 @@
 <?php
 include_once("db.php");
+session_start();
 
-if(isset($_POST['uname'])){
+if (isset($_POST['uname']) && isset($_POST['pass1'])) {
     $user_name = $_POST['uname'];
     $pass_word = $_POST['pass1'];
 
-$sql_check_user = "SELECT *FROM users 
-                 WHERE username = '$user_name'
-                 AND password = '$pass_word'";
-$user_result = mysqli_query($conn, $sql_check_user);
-if(mysqli_num_rows($user_result)== 1){
-$row=mysqli_fetch_assoc($user_result);
-
-//echo $row['fullname'] . "<br>";
-//echo $row['user_type'];
-
-if ($row['user_type']=='U'){
-
-    echo "User already exist.";
-    die();
-}
-else if($row['user_type']=='A'){
-    echo "Admin already exist.";
-    die();
-
-}
-else{
-    echo "Not found.";
-    die();
-}
-
-
-}      
-}
-?>
-
-<?php
-include_once("db.php");
-
-if (isset($_POST['fullname'])) {
-    $full_name = $_POST['fullname'];
-    $user_name = $_POST['uname'];
-    $email_address = $_POST['email_address'];
-    $contact_number = $_POST['contact_number'];
-    $address = $_POST['address'];
-    $pass_word = $_POST['pass1'];
-    $conf_pass_word = $_POST['pass2'];
-
-    if ($pass_word != $conf_pass_word) {
-        echo "Password Mismatch";
-        die();
-    }
-        $sql_check_user = "SELECT * FROM users
-        WHERE user_fullname ='$full_name' 
-        OR username ='$user_name'";
-
-        $user_result = mysqli_query($conn, $sql_check_user);
-        if (mysqli_num_rows($user_result) > 0) {
-            header("location: registration.php?error=alreadyexist");
-        }
-       else { 
-        $sql_insert_user = "INSERT INTO users 
-        (user_fullname, username, password, contact_number, email_address, user_address) 
-        VALUES 
-        ('$full_name', '$user_name', '$pass_word', '$contact_number','$email_address', '$address')";
-
+    $sql_get_user_data = "SELECT * FROM users
+                          WHERE username = '$user_name'
+                          AND password = '$pass_word'";
     
-        mysqli_query($conn, $sql_insert_user);
-                header("location: index.php?msg=userregistered");
+    $user_result = mysqli_query($conn, $sql_get_user_data);
 
-                
-        
-            }
+    if (mysqli_num_rows($user_result) > 0) {
+        $row = mysqli_fetch_assoc($user_result);
+
+        $_SESSION['user_info'] = [
+            'user_id' => $row['user_id'],
+            'username' => $row['username'],
+            // Add other user-related information as needed
+        ];
+
+        $_SESSION['user_global_info'] = [
+            'user_id' => $row['user_id'],
+            'username' => $row['username'],
+            'user_fullname' => $row['user_fullname'],
+            'user_status' => $row['user_status'],
+            'user_type' => $row['user_type'],
+            'email_address' => $row['email_address'],
+            'contact_number' => $row['contact_number'],
+            'user_address' => $row['user_address']
+        ];
+
+        // Redirect based on user type
+        if ($row['user_type'] == 'A') {
+            header("location: admin/");
+        } else if ($row['user_type'] == 'U') {
+            header("location: user/");
+        } else {
+            header("location: log_in.php");
+        }
+    } else {
+        header("location: log_in.php?error=777");
     }
-    else{
-        header("location: registration.php?error=notallowed"); 
-    }
-
-
+} else {
+    header("location: log_in.php?msg=notallowed");
+}
 ?>
