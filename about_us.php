@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visitor Homepage</title>
+    <title>About Us</title>
     <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <!-- Add other CSS stylesheets if needed -->
@@ -64,7 +64,7 @@
 
     <div class="container-fluid navbar-container">
         <div class="navbar-logo">
-            <a><img src="tc.jpg" alt="Logo" width="40" height="24" class="d-inline-block align-text-top">TOKEN CORE</a>
+            <a><img src="token core logo.jpg" alt="Logo" width="40" height="24" class="d-inline-block align-text-top">TOKEN CORE</a>
     </div>
             <nav class="nav-item" style="margin-left: 80%">  
                 <a class="nav-link" href="index.php">Login</a>
@@ -79,7 +79,7 @@
 
     <div class="container mt-4 text-center">
         <nav class="navbar-links d-inline-block">
-            <a class="nav-link active navbar-link" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link active navbar-link" aria-current="page" href="visitor.php">Home</a>
             <a class="nav-link navbar-link" href="visitor_explore.php">Explore</a>
             <a class="nav-link navbar-link" href="#">Contact</a>
             <a class="nav-link navbar-link" href="about_us.php">About Us</a>
@@ -88,13 +88,12 @@
       
     <div class="container-fluid picture-container">
         <div class="img">
-            <img src="token core logo.jpg" />
+            <img src="loginpic.jpg" />
         </div>
-       <div class="text">
+        <div class="text">
                 <h1>TOKEN CORE</h1><span>
-                    <h3 style="font-size:20px"> The merchandise in which full of surprises awaits you. </h3>
-                </span><span><button style="background-color:beige"  href="visitor_explore.php">Explore</button>
-                    </span> 
+                    <h3 style="font-size:20px"> Welcome to Token Core, where passion for anime comes to life! Founded by avid anime enthusiasts, our journey began with the shared love for the captivating world of anime characters and series. At Token Core, we're not just a marketplace; we're a community that celebrates the vibrant and diverse anime culture. Our mission is to provide fellow fans with top-quality merchandise that reflects the essence of their favorite characters and stories. We take pride in curating a unique collection of products that resonate with the anime community. Committed to customer satisfaction, we ensure that each item meets our high standards of quality. Join us in this anime adventure, where you're not just shopping for merchandise; you're embracing the spirit of your favorite series. Thank you for being part of the Token Core family! </h3>
+                </span> 
     </div>   
 
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
