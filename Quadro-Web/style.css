@@ -1,0 +1,40 @@
+body{
+    margin:0px;
+    padding: 0px;
+    background-color:  rgb(238, 237, 226);
+    
+}
+.container {
+    background-color: azure;
+
+}
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    margin-top: 10px; /* Adjust spacing as needed */
+}
+
+#carouselExampleSlidesOnly img{
+    width:40%;
+    height:50%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
+.card-group{
+    margin-left:15px;
+    margin-right:15px;
+}
+
+.logo{
+    width:7%;
+    height: 7%;
+}
+
+.proimg{
+    width:10%;
+height:10%;
+}
